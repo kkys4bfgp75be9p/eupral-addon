@@ -14,13 +14,13 @@
 
         <template id="website.impressum" name="Impressum" page="True">
             <t t-call="website.layout">
-                <div id="wrap">
-                    <div class="oe_structure">
-                        <section data-snippet-id="title">
-                            <h1 class="text-center">
+                <div id="wrap" class="impressum">
+                    <div class="container">
+                        <div data-snippet-id="title">
+                            <h1 class="text-left">
                                 Impressum
                             </h1>
-                        </section>
+                        </div>
                     </div>
                     <div class="container">
                         <div class="row">
