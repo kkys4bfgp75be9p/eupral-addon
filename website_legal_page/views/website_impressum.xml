@@ -57,6 +57,11 @@
                                             USt-IdNr.: <span t-field="res_company.vat"/>
                                         </p>
                                     </t>
+                                    <t t-if="res_company.company_registry">
+                                        <p>
+                                            <span t-field="res_company.company_registry"/>
+                                        </p>
+                                    </t>
                                 </div>
                                 <div>
                                     <t t-if="res_company.phone or res_company.email or res_company.fax">
