@@ -24,10 +24,10 @@
                     <section>
                         <t t-if='brand_rec'>
                             <t t-foreach="brand_rec" t-as="o">
-                                <div class="col-md-3" style="display: inline-block;">
-                                    <a t-att-href="keep('/shop/brands',brand = o.id)">
-                                        <div class='row' style='margin-left:15%;'>
-                                            <img itemprop="image" width="200px" height="200px" class="img" t-attf-src="/website/image/product.brand/#{o.id}/logo#{'?max_width=300&amp;max_height=300'}"/>
+                                <div class="col-md-3">
+                                    <a style="display:block;" t-att-href="keep('/shop/brands',brand = o.id)">
+                                        <div class='row' style="text-align:center;height:100px;line-height:98px;">
+                                            <img itemprop="image" width="90px" height="auto" class="img" t-attf-src="/website/image/product.brand/#{o.id}/logo#{'?max_width=300&amp;max_height=300'}"/>
                                         </div>
                                         <div class='row' style='text-align:center;'>
                                             <t t-esc='o.name' />
