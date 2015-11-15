@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <!-- Customize header  -->
+        <template id="eupral_eshop_custom_template" inherit_id="website.layout" name="Eupral EShop Custom Template">
+
+            <!--<xpath expr="//div[@id='wrapwrap']/header" position="attributes">
+                <attribute name="id">my_header</attribute>
+            </xpath>-->
+
+           <!-- <xpath expr="//t[@t-call='website.layout_logo_show'" position="replace">
+                <div></div>
+            </xpath>-->
+
+            <xpath expr="//div[@id='wrapwrap']/header/div" position="replace">
+                <div class="header_top"><!--header_top-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 ">
+                                <div class="contactinfo">
+                                    <ul class="nav nav-pills">
+                                        <li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+                                        <li><a href=""><i class="fa fa-envelope"></i> contact@eupral.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="social-icons pull-right">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href=""><i class="fa fa-weixin"></i></a></li>
+                                        <li><a href=""><i class="fa fa-weibo"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <!--<div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="logo pull-left">
+                                    <a href="/shop">
+                                        <h2>EUPRAL.COM</h2>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="shop-menu pull-right">
+                                    <ul class="nav navbar-nav" id="top_menu">
+                                        <li t-ignore="true" t-if="website.user_id != user_id">
+                                            <a href="#">
+                                                <i class="fa fa-user"></i>
+                                                <span t-esc="user_id.name"/>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/page/contactus">
+                                                <i class="fa fa-star"></i>
+                                                联系我们
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/shop/cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                购物车
+                                                <sup class="my_cart_quantity label label-primary"></sup>
+                                            </a>
+                                        </li>
+                                        <li t-if="website.user_id != user_id">
+                                            <a t-attf-href="/web/session/logout?redirect=/" role="menuitem">
+                                                <i class="fa fa-lock"></i>
+                                                退出
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-top-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"/>
+                                <span class="icon-bar"/>
+                                <span class="icon-bar"/>
+                            </button>
+                            <a class="navbar-brand" href="/" t-field="res_company.name"/>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-top-collapse shop-menu">
+                            <ul class="nav navbar-nav navbar-right" id="top_menu">
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu"/>
+                                </t>
+                                <!--<li class="divider" t-ignore="true" t-if="website.user_id != user_id"/>-->
+                                <li class="dropdown" t-ignore="true" t-if="website.user_id != user_id">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b>
+                                            <span t-esc="user_id.name"/>
+                                            <span class="caret"/>
+                                        </b>
+                                    </a>
+                                    <ul class="dropdown-menu js_usermenu" role="menu">
+                                        <li><a href="/web" role="menuitem">My Account</a></li>
+                                        <li class="divider"/>
+                                        <li><a t-attf-href="/web/session/logout?redirect=/" role="menuitem">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="header-bottom">&lt;!&ndash;header-bottom&ndash;&gt;
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="mainmenu pull-left">
+                                    <ul class="nav navbar-nav collapse navbar-collapse">
+                                        <li t-att-class=" '' if category else 'active' ">
+                                            <a t-att-href="keep('/shop',category=0)">所有商品</a>
+                                        </li>
+                                        <t t-foreach="categories" t-as="c">
+                                            <t t-call="website_sale.categories_recursive"/>
+                                        </t>
+&lt;!&ndash;                                        <li><a href="index.html">Home</a></li>
+                                        <li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li><a href="shop.html" class="active">Products</a></li>
+                                                <li><a href="product-details.html">Product Details</a></li>
+                                                <li><a href="checkout.html">Checkout</a></li>
+                                                <li><a href="cart.html">Cart</a></li>
+                                                <li><a href="login.html">Login</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li><a href="blog.html">Blog List</a></li>
+                                                <li><a href="blog-single.html">Blog Single</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="404.html">404</a></li>
+                                        <li><a href="contact-us.html">Contact</a></li>&ndash;&gt;
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="search_box pull-right">
+                                    <input type="text" placeholder="Search"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+            </xpath>
+        </template>
+
+        <template id="eupral_eshop_custom_categories" inherit_id="website_sale.products"
+                  name="Eupral EShop Custom Category Template">
+            <xpath expr="//div[@id='products_grid_before']" position="inside">
+                <div class="left-sidebar">
+                    <h2>商品目录</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <div class="panel panel-default" t-att-class=" '' if category else 'active' ">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"><a t-att-href="keep('/shop',category=0)">All Products</a></h4>
+                            </div>
+                        </div>
+
+                        <t t-foreach="categories" t-as="c">
+                            <div class="panel panel-default"  t-att-class="'active' if c.id == int(category or 0) else ''">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a t-att-href="keep('/shop/category/' + slug(c), category=0, brand=brand)" t-field="c.name"/></h4>
+                                </div>
+                            </div>
+                        </t>
+                    </div><!--/category-productsr-->
+
+                    <!--<div class="brands_products">&lt;!&ndash;brands_products&ndash;&gt;
+                        <h2>入驻品牌</h2>
+                        <div class="brands-name">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
+                                <li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
+                                <li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>
+                                <li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>
+                                <li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>
+                                <li><a href=""> <span class="pull-right">(9)</span>Boudestijn</a></li>
+                                <li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+                            </ul>
+                        </div>
+                    </div>&lt;!&ndash;/brands_products&ndash;&gt;-->
+                </div>
+            </xpath>
+        </template>
+
+
+        <template id="eupral_eshop_custom_search_pager" inherit_id="website_sale.products"
+                  name="Eupral EShop Custom Search and Pager Template">
+            <xpath expr="//div[@id='wrap']/div[2]/div[1]" position="replace">
+                <div class="products_pager mt30">
+                    <div class="row">
+                        <form t-att-action="keep('/shop'+ ('/category/'+slug(category)) if category else '', search=0)" method="get" t-att-class="search_class">
+
+                            <t t-if="attrib_values">
+                                <t t-foreach="attrib_values" t-as="a">
+                                    <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])"/>
+                                </t>
+                            </t>
+                            <div class="input-group">
+                                <input type="text" name="search" class="search-query form-control" placeholder="搜索..." t-att-value="search"/>
+                                <span class="input-group-btn">
+                                    <a class="btn btn-default a-submit"><i class="fa fa-search"/></a>
+                                </span>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="eupral_eshop_custom_products" inherit_id="website_sale.products"
+                name="Eupral EShop Custom Products Template">
+            <xpath expr="//div[@id='products_grid']/table" position="before">
+                <t t-if="category">
+                    <h2 class="title text-center" t-field="category.name"></h2>
+                </t>
+                <t t-if="not category">
+                    <h2 class="title text-center">所有商品</h2>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="eupral_eshop_custom_product_cell" inherit_id="website_sale.products"
+                  name="Eupral EShop Custom Product Cell Template">
+            <xpath expr="//t[@t-call='website_sale.products_item']" position="replace">
+                <form action="/shop/cart/update" method="post">
+                    <div itemscope="itemscope" itemtype="http://schema.org/Product">
+                        <div class="ribbon-wrapper">
+                            <div class="ribbon btn btn-danger">Sale</div>
+                        </div>
+                        <div class="oe_product_image">
+                            <a itemprop="url" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))">
+                                <img itemprop="image" class="img img-responsive" t-att-src="website.image_url(product, 'image', None if product_image_big else '300x300')" t-att-alt="product.name"/>
+                            </a>
+                        </div>
+                        <section>
+                            <p class="product__name">
+                                <a itemprop="name" t-att-href="keep('/shop/product/%s' % slug(product), page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-field="product.chinese_name"/>
+                            </p>
+                            <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="product_price" t-if="product.product_variant_ids">
+                                <b>
+                                    <t t-if="(compute_currency(product.lst_price) - product.price) &gt; 0.1">
+                                        <del class="text-danger" style="white-space: nowrap;" t-field="product.lst_price" t-field-options="{                   &quot;widget&quot;: &quot;monetary&quot;,                   &quot;from_currency&quot;: &quot;product.company_id.currency_id&quot;,                   &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                 }"/>&amp;nbsp;
+                                    </t>
+                                    <span t-field="product.price" style="white-space: nowrap;" t-field-options="{                    &quot;widget&quot;: &quot;monetary&quot;,                    &quot;display_currency&quot;: &quot;user_id.partner_id.property_product_pricelist.currency_id&quot;                }">
+                                    </span>
+                                    <span itemprop="price" style="display:none;" t-esc="product.price"/>
+                                    <span itemprop="priceCurrency" style="display:none;" t-esc="user_id.partner_id.property_product_pricelist.currency_id.name"/>
+                                </b>
+                            </div>
+                        </section>
+                    </div>
+                </form>
+            </xpath>
+        </template>
+
+
+        <template id="eupral_eshop_custom_products_pager" inherit_id="website_sale.products"
+                  name="Eupral EShop Custom Product Pager Template">
+            <xpath expr="//*[@id='wrap']/div[2]/div[3]" position="replace">
+                <div class="row">
+                    <div class="col-md-9 col-md-offset-3">
+                        <ul t-if="pager['page_count'] &gt; 1" t-attf-class="#{ classname or '' } pagination" t-att-style="style or ''">
+                            <li t-att-class=" 'disabled' if pager['page']['num'] == 1 else '' ">
+                                <a t-att-href=" pager['page_previous']['url'] if pager['page']['num'] != 1 else ''">«</a>
+                            </li>
+                            <t t-foreach="pager['pages']" t-as="page">
+                                <li t-att-class=" 'active' if page['num'] == pager['page']['num'] else '' "> <a t-att-href="page['url']" t-raw="page['num']"/></li>
+                            </t>
+                            <li t-att-class=" 'disabled' if pager['page']['num'] == pager['page_count'] else '' ">
+                                <a t-att-href="pager['page_next']['url'] if pager['page']['num'] != pager['page_count'] else ''">»</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+
+
+
+    </data>
+</openerp>

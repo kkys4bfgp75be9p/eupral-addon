@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Custom Snippet CSS and javascript -->
+        <template id="eupral_custom_template_css_and_js" inherit_id="website.layout"
+                  name="Eupral Custom Template CSS and JS">
+            <!-- Customize javascript -->
+            <!--<xpath expr="//body" position="inside">
+                <script type="text/javascript" src="/eupral_website/static/src/js/jquery-ean13.min.js"/>
+                <script type="text/javascript" src="/eupral_website/static/src/js/eupral-ean13.js"/>
+            </xpath>-->
+
+            <!-- Customize CSS -->
+            <xpath expr="//t[@t-call-assets='website.assets_frontend']" position="after">
+                <link href="/eupral-custom-template/static/src/css/bootstrap.min.css" rel="stylesheet"/>
+                <!--<link href="/eupral-custom-template/static/src/css/font-awesome.min.css" rel="stylesheet"/>-->
+                <link href="/eupral-custom-template/static/src/css/animate.css" rel="stylesheet"/>
+                <link href="/eupral-custom-template/static/src/css/main.css" rel="stylesheet"/>
+                <link href="/eupral-custom-template/static/src/css/responsive.css" rel="stylesheet"/>
+                <link href="/eupral-custom-template/static/src/css/eupral.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
