@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="impressum_link"
+                  inherit_id="website.layout_footer_copyright"
+                  name="Impressum Link">
+            <xpath expr="//footer//div/span[@t-field='res_company.name']" position="after">
+                <span>-
+                    <a href="/page/impressum">Impressum</a>
+                </span>
+            </xpath>
+        </template>
+
+        <template id="website.impressum" name="Impressum" page="True">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <section data-snippet-id="title">
+                            <h1 class="text-center">
+                                Impressum
+                            </h1>
+                        </section>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 mb16 mt16">
+                                <div>
+                                    <p>
+                                        <b>www.eupral.com</b>
+                                        ist einen Tochter Unternehmen von
+                                        <b>Immoinvest Deutschland Gmbh</b>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        <t t-if="res_company.street">
+                                            <span t-field="res_company.street"/><br/>
+                                            <t t-if="res_company.city">
+                                                <span t-field="res_company.city"/><br/>
+                                            </t>
+                                            <t t-if="res_company.zip">
+                                                <span t-field="res_company.zip"/>
+                                            </t>
+                                            <t t-if="res_company.state_id">
+                                                <span t-field="res_company.state_id.name"/><br/>
+                                            </t>
+                                            <t t-if="res_company.country_id">
+                                                <span t-field="res_company.country_id.name"/>
+                                            </t>
+                                        </t>
+                                    </p>
+                                </div>
+                                <div>
+                                    <t t-if="res_company.vat">
+                                        <p>
+                                            USt-IdNr.: <span t-field="res_company.vat"/>
+                                        </p>
+                                    </t>
+                                </div>
+                                <div>
+                                    <t t-if="res_company.phone or res_company.email or res_company.fax">
+                                        <p>
+                                           <b>Kontaktdaten:</b>
+                                        </p>
+                                        <ul>
+                                            <t t-if="res_company.phone">
+                                                <li>Telefon: <span t-field="res_company.phone"/></li>
+                                            </t>
+                                            <t t-if="res_company.fax">
+                                                <li>Telefax: <span t-field="res_company.fax"/></li>
+                                            </t>
+                                            <t t-if="res_company.email">
+                                                <li>E-Mail:
+                                                    <a t-attf-href="mailto:#{res_company.email}">
+                                                        <span t-field="res_company.email"/>
+                                                    </a>
+                                                </li>
+                                            </t>
+                                        </ul>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</openerp>

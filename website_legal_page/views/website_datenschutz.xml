@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="datenschutz_link"
+                  inherit_id="website.layout_footer_copyright"
+                  name="Datenschutz Link">
+            <xpath expr="//footer//div/span[@t-field='res_company.name']" position="after">
+                <span>-
+                    <a href="/page/datenschutz">Datenschutz</a>
+                </span>
+            </xpath>
+        </template>
+
+        <template id="website.datenschutz" name="Datenschutz" page="True">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <section data-snippet-id="title">
+                            <h1 class="text-center">
+                                Datenschutz
+                            </h1>
+                        </section>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</openerp>
