@@ -1,0 +1,20 @@
+.products_pager {
+    text-align: left;
+}
+
+.products_pager .pagination {
+    float: right !important;
+}
+
+.products_pager form.pagination {
+    float: left !important;
+}
+
+#products_grid_before ul {
+    width: 75%;
+}
+
+.oe_product_cart h5 strong  {
+    font-weight: normal;
+    font-size: 12px;
+}

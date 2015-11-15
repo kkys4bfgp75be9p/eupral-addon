@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Custom Snippet CSS and javascript -->
+        <template id="eupral_custom_template_css" inherit_id="website.layout"
+                  name="Eupral Custom Template CSS">
+            <!-- Customize CSS -->
+            <xpath expr="//t[@t-call-assets='website.assets_frontend']" position="after">
+               <link href="/eupral-custom-template-fix-style/static/src/css/eupral.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>
